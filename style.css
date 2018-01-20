@@ -1,0 +1,211 @@
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+input {
+	font-size: 14px;
+	font-family: Helvetica, sans-serif;
+}
+
+body {
+	background-color: #BBB;
+	font-family: Helvetica, sans-serif;
+	padding-bottom: 100px;
+}
+
+h2, h3 {
+	margin: 0 0 .75em 0;
+}
+
+.flexbox-intro {
+	margin: 10px 10vw;
+}
+
+.flexbox-intro h1 {
+	text-align: center;
+}
+
+/* first example */
+	.container {
+		max-width: 750px;
+		margin: 20px auto 0 auto;
+		padding: 30px;
+		background-color: #FFF;
+	}
+
+	.form-row {
+		padding: 10px 0;
+
+		/* Adding display:flex in order to sizeing the children elements inside this element */
+		display: flex;
+	}
+
+	.form-row label {
+		padding-right: 10px;
+	}
+
+	.form-row input {
+		/* Since we did not add a flex rule to the label element, and since no other elements are inline with this row, adding flex:1 to this input element will force this flex element to take up all of the extra available space. */
+		flex: 1;
+	}
+
+/* second example */
+	.column-layout {
+		max-width: 1300px;
+		background-color: #FFF;
+		margin: 40px auto 0 auto;
+		line-height: 1.65;
+		padding: 20px 50px;
+		/* Adding display:flex in order to manipulate the children elements inside this element*/
+		display: flex;
+	}
+
+	.main-column {
+		/* Making this element 3x as wide as the elements with flex:1 */
+		flex: 3;
+		/* Manipulating the order these boxes will be displayed */
+		order: 2;
+	}
+
+	.sidebar-one {
+		/*This element will be 3x smaller than the element with flex: 3*/
+		flex: 1;
+		/*This element will come first in the order. This is the default value*/
+		order: 1;
+	}
+
+	.sidebar-two {
+		/*This element will be the same size as it's flex: 1 sibling*/
+		flex: 1;
+		/*This element will come third in the order*/
+		order: 3;
+	}
+
+/* third example */
+	.call-outs-container {
+		max-width: 1400px;
+		margin: 40px auto 0 auto;
+	}
+
+	.call-out {
+		padding: 20px;
+		box-sizing: border-box;
+		margin-bottom: 20px;
+		/*Flexbox way of defining a width of an element. Now all three call-out elements will take up 90% of the width of the window. */
+		flex-basis: 30%;
+	}
+
+	/*Creating inline elements only for large screens*/
+	@media (min-width: 900px) {
+		.call-outs-container {
+			/*Adding ability to manipulate flex elements*/
+			display: flex;
+
+			/*Since 90% of the width will be taken up by the call-out elements, the remaining 10% will be distributed equally in the margins BETWEEN each element (not on the outside edges of the first and last elements). */
+			justify-content: space-between;
+
+			/*To align different sized elements at the top:*/
+			/*align-items: flex-start;*/
+
+			/*To align different sized elements at the bottom:*/
+			/*align-items: flex-end;*/
+
+			/*To center align different sized elements:*/
+			/*align-items: center;*/
+
+			/*To create equal height columns you need to use stretch. No need to add this as it is the default.  */
+			/*align-items: stretch;*/
+		}
+	}
+
+	.call-out:nth-child(1) {background-color: #c0dbe2;}
+	.call-out:nth-child(2) {background-color: #cdf1c3;}
+	.call-out:nth-child(3) {background-color: #ccb9da;}
+
+/* fourth example */
+	.fixed-size-container {
+		max-width: 1400px;
+		margin: 40px auto 0 auto;
+		background-color: #FFF;
+		padding: 30px 0;
+		display: flex;
+		align-items: center;
+
+		/*If there is remaining space, it will be distributed equally in the margins around each element including the first and last elements. */
+		justify-content: space-around;
+
+		/*If there is no more space to be distributed and the window shrinks, elements will wrap down to the next line. (Flex-wrap: no-wrap is the default)*/
+		flex-wrap: wrap;
+	}
+
+	.fixed-size {
+		width: 150px;
+		height: 100px;
+		background-color: #990b47;
+		color: #FFF;
+		line-height: 100px;
+		text-align: center;
+		font-weight: bold;
+		font-size: 60px;
+		margin-bottom: 20px;
+	}
+
+/* fifth example */
+	.banner {
+		height: 400px;
+		max-width: 700px;
+		margin: 40px auto 40px auto;
+		background-color: #2a2a2a;
+		display: flex;
+	}
+
+	.center-me {
+		color: #FFF;
+		font-size: 50px;
+
+		/*Using margin rule with flex will automatically center horizontally AND vertically*/
+		margin: auto;
+	}
+
+/* sixth example */
+	.equal-height-container {
+		max-width: 900px;
+		margin: 0 auto;
+		display: flex;
+	}
+
+	.first {
+		background-color: #FFF;
+		padding: 20px;
+
+		/*Giving both elements equal spacing*/
+		flex: 1;
+	}
+
+	.second {
+		background-color: yellow;
+
+		/*Giving both elements equal spacing*/
+		flex: 1;
+
+		/*Nesting another flexbox inside our first flexbox*/
+		display: flex;
+
+		/*Creating columns (columns are horizontal, rows are vertical) to divy up columns space to hold our two nested flex elements (default is flex-direction: row)*/
+		flex-direction: column;
+	}
+
+	.second-a {
+		background-color: #c0dbe2;
+
+		/*Giving our nested flexbox elements equal spacing*/
+		flex: 1;
+	}
+
+	.second-b {
+		background-color: #cdf1c3;
+
+		/*Giving our nested flexbox elements equal spacing*/
+		flex: 1;
+	}
