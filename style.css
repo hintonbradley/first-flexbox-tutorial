@@ -77,7 +77,7 @@ h2, h3 {
 
 	.sidebar-two {
 		/*This element will be the same size as it's flex: 1 sibling*/
-		flex: 1;
+		flex: 3;
 		/*This element will come third in the order*/
 		order: 3;
 	}
